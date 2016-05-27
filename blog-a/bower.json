@@ -1,0 +1,10 @@
+{
+  "name": "MEAN",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "zepto": "^1.1.6",
+    "angular-route": "^1.5.5",
+    "angular-resource": "^1.5.5"
+  }
+}

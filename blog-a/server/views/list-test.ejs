@@ -1,0 +1,26 @@
+<% include header.ejs %>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>编号</th>
+        <th>标题</th>
+        <th>内容</th>
+        <th>描述</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% lists.forEach(function(listitem,index){ %>
+      <tr>
+        <th scope="row"><%=(index+1)%></th>
+        <td><%=listitem.name%></td>
+        <td><%=listitem.title%></td>
+        <td><%=listitem.info%></td>
+      </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<% include footer.ejs %>

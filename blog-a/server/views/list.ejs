@@ -1,0 +1,28 @@
+<div class="row" data-ng-controller="listController" data-ng-init="findAll();">
+  <div class="col-md-12"><a href="/#!/list/create" class="btn btn-info">添加内容</a>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>编号</th>
+        <th>标题</th>
+        <th>内容</th>
+        <th>描述</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr data-ng-repeat="listitem in lists">
+        <th scope="row">{{$index+1}}</th>
+        <td data-ng-bind="listitem.name"></td>
+        <td data-ng-bind="listitem.title"></td>
+        <td data-ng-bind="listitem.info"></td>
+        <td><a href="/#!/list/{{listitem._id}}/edit" class="btn btn-default btn-xs">编辑</a>&nbsp;&nbsp;<a href="/#!/list/{{listitem._id}}" class="btn btn-success btn-xs">详情</a>&nbsp;&nbsp;<a href="/#!/blog/list" ng-click="delete(listitem);" class="btn btn-danger btn-xs J_del">删除</a></td>
+      </tr>
+      </tbody>
+    </table>
+    <div data-ng-hide="!lists || lists.length">
+      <a href="/#!/list/create" class="btn btn-info">添加一个</a>
+    </div>
+    <div ng-if="pageInfo && pageInfo.totalPage > 1"><% include page.ejs %></div>
+  </div>
+</div>

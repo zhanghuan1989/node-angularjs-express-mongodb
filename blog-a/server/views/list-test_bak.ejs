@@ -1,0 +1,22 @@
+<div class="row" data-ng-controller="listTestController" data-ng-init="findAllTest();">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>编号</th>
+        <th>标题</th>
+        <th>内容</th>
+        <th>描述</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr data-ng-repeat="listitem in lists.lists">
+        <th scope="row">{{$index+1}}</th>
+        <td data-ng-bind="listitem.name"></td>
+        <td data-ng-bind="listitem.title"></td>
+        <td data-ng-bind="listitem.info"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

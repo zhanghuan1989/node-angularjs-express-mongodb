@@ -1,0 +1,34 @@
+<section data-ng-controller="listController">
+  <form class="form-horizontal" data-ng-submit="create()" novalidate>
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="name" name="name" placeholder="name" data-ng-model="name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">title</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="title" name="title" placeholder="title" data-ng-model="title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">info</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="info" name="info" placeholder="info" data-ng-model="info">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <!-- 页面多定义啦input button 导致增删改查方法不可用，目前不知道为啥 -->
+        <div class="btn btn-default" ng-click="goBack()">返回</div>
+        <input type="submit" class="btn btn-default" value="添加">
+      </div>
+    </div>
+    <div data-ng-show="error">
+      <strong data-ng-bind="error"></strong>
+    </div>
+  </form>
+</section>
+
+

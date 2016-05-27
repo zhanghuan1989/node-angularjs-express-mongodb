@@ -1,0 +1,22 @@
+<div class="row" data-ng-controller="listTestController" data-ng-init="findAllTest();">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>编号</th>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>密码</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr data-ng-repeat="listitem in lists">
+        <th scope="row">{{$index+1}}</th>
+        <td data-ng-bind="listitem._id"></td>
+        <td data-ng-bind="listitem.name"></td>
+        <td data-ng-bind="listitem.password"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

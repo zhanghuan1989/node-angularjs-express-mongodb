@@ -1,0 +1,30 @@
+<section data-ng-controller="listController" data-ng-init="findOne()">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="name" name="name" readonly="readonly" data-ng-model="list.name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">title</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="title" name="title" readonly="readonly" data-ng-model="list.title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">info</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="info" name="info" readonly="readonly" data-ng-model="list.info">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="btn btn-default" ng-click="goBack()">返回</div>
+        <input type="button" class="btn btn-default" value="删除" ng-click="deleteByDetail();">
+      </div>
+    </div>
+  </form>
+</section>
+
+

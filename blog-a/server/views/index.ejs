@@ -1,0 +1,85 @@
+<% include header.ejs %>
+<section class="container">
+  <header class="header">
+    <!-- logo start-->
+    <div class="brand"><a href="/blog" class="logo">管理后台</a></div>
+    <span class="user-info">
+      <% if(user){ %>
+      <span class="success-name">欢迎【<%=user.name%>】登录</span>&nbsp;&nbsp;<a href="/blog/user/loginout">退出</a>
+      <% } %>
+    </span>
+    <!-- logo end-->
+  </header>
+  <!-- sidebar left start-->
+  <aside class="sidebar">
+    <div id="leftside-navigation" class="nano">
+      <ul class="nano-content">
+        <li><a href="/#!/blog"><i class="glyphicon glyphicon-home"></i><span>首页</span></a></li>
+        <li class="sub-menu active"><a href="javascript:void(0);"><i class="glyphicon glyphicon-user"></i><span>用户</span><i class="arrow glyphicon glyphicon-menu-right pull-right"></i></a>
+          <ul>
+            <li class="active"><a href="/blog/user/login">登录</a></li>
+            <li><a href="/blog/user/register">注册</a></li>
+          </ul>
+        </li>
+        <li class="sub-menu"><a href="/#!/list"><i class="glyphicon glyphicon-th-list"></i><span>列表</span><i class="arrow glyphicon glyphicon-menu-right pull-right"></i></a>
+          <ul>
+            <li><a href="/#!/list/create">添加</a></li>
+            <li><a href="/blog/list/test">接口列表</a></li>
+            <li><a href="/#!/list/test2">angular接口列表</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <!-- sidebar left end-->
+  <!-- main content start-->
+  <section class="main-content-wrapper">
+    <section id="main-content">
+      <!-- ngRoute显示模板 -->
+      <section ng-view></section>
+    </section>
+    <!-- 注意引入文件中的单引号 -->
+    <!-- angular html -->
+    <section ng-include="'views/inputTest.html'"></section>
+  </section>
+  <!-- main content end-->
+</section>
+
+<% include footer.ejs %>
+<script>
+  var page = '<%- JSON.stringify(pageInfo) %>';
+  page = JSON.parse(page);
+
+  console.info(page);
+  var totalPage = page.totalPage;
+  var currentPage = Math.min(page.currentPage, page.totalPage);
+  var pageSize = page.pageSize;
+
+  var pageHtml = "";
+
+  $(document).ready(function() {
+    if($("#pagination")){
+      //只有一页内容
+      if(totalPage <= 1){pageHtml="";}
+      //大于一页内容
+      if(totalPage > 1){
+        if(currentPage>1){
+          pageHtml += '<li><a href="/blog?page='+(currentPage-1)+'">上一页</a></li>';
+        }
+        for(var i=0;i<totalPage;i++){
+          if(i >= (currentPage - 3) && i<(currentPage + 3)){
+            if(i == currentPage-1){
+              pageHtml += '<li class="active"><a href="/blog/?page='+(i+1)+'">'+(i+1)+'</a></li>';
+            }else{
+              pageHtml += '<li><a href="/blog?page='+(i+1)+'">'+(i+1)+'</a></li>';
+            }
+          }
+        }
+        if(currentPage<totalPage){
+          pageHtml += '<li><a href="/blog?page='+(currentPage+1)+'">下一页</a></li>';
+        }
+      }
+      $("#pagination").html(pageHtml);
+    }
+  });
+</script>
